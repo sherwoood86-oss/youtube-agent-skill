@@ -1,5 +1,7 @@
 import { Composition } from "remotion";
 import { Edit, EditProps } from "./Edit";
+import { TextShort, TextShortProps, textShortFrames } from "./TextShort";
+import example from "../examples/text-short.json";
 
 // Placeholder props so the studio opens before props.py has run. Real renders pass --props.
 const empty: EditProps = {
@@ -13,6 +15,7 @@ const empty: EditProps = {
 };
 
 export const Root: React.FC = () => (
+  <>
   <Composition
     id="Edit"
     component={Edit}
@@ -29,4 +32,15 @@ export const Root: React.FC = () => (
       height: props.height,
     })}
   />
+  <Composition
+    id="TextShort"
+    component={TextShort}
+    defaultProps={example as TextShortProps}
+    durationInFrames={textShortFrames(example as TextShortProps)}
+    fps={30}
+    width={1080}
+    height={1920}
+    calculateMetadata={({ props }) => ({ durationInFrames: textShortFrames(props), fps: props.fps })}
+  />
+  </>
 );

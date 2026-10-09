@@ -36,7 +36,25 @@ npm run studio                        # scrub it in the browser first
 npm run render                        # -> out/edit.mp4
 ```
 
-## What it does
+## A Short with no footage
+
+`TextShort` is a second composition: no video, just one beat of on-screen text after another on a
+gradient, with a progress bar. The script is the props file - see `template/examples/text-short.json`.
+
+- One `scene` per beat: `text`, `seconds` on screen, an optional `kicker` label above it.
+- `*asterisks*` around one or several words colour them with the accent.
+- Time it for reading, not speaking: about three words a second plus a beat. Keep the whole thing
+  under 60 seconds unless the user asks otherwise.
+- Write it like any Short (see `/yt-shorts`): a complete first line, a turn, an ending on a line, and
+  a last beat that leads back into the first so the loop reads as one sentence.
+
+```bash
+npm run render:text                   # -> out/short.mp4 from examples/text-short.json
+npx remotion render TextShort out/short.mp4 --props=my-short.json
+```
+
+It renders silent. Voiceover and music are the user's to add - say so, do not imply it has sound.
+
 
 - **Closes up the cuts.** Every kept range becomes a `<Sequence>` trimmed into the source, frame
   aligned before the timeline is built so captions do not drift by the end of a long edit. A sliver

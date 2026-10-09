@@ -4,7 +4,8 @@
   "description": "Renders the props.py output: cuts closed up, captions burned in, hook text on the open.",
   "scripts": {
     "studio": "remotion studio",
-    "render": "remotion render Edit out/edit.mp4 --props=props.json"
+    "render": "remotion render Edit out/edit.mp4 --props=props.json",
+    "render:text": "remotion render TextShort out/short.mp4 --props=examples/text-short.json"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
