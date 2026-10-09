@@ -55,6 +55,18 @@ npx remotion render TextShort out/short.mp4 --props=my-short.json
 
 It renders silent. Voiceover and music are the user's to add - say so, do not imply it has sound.
 
+## A recurring blocky character
+
+`Blocky.tsx` draws a block-built character in SVG - head, torso, arms, legs, three moods, a punch,
+a walk cycle, a speech bubble - with a palette per character, so one cast runs across episodes.
+`BrawlerShort.tsx` is episode 1 of Злыдень, the one who picks a fight with everything: a newbie who
+hops over him, a wall that wins, then the viewer. `npm run render:brawler`. It has two sound
+effects (`public/sfx/`, synthesised with ffmpeg, no licence attached) and no voice or music.
+
+An episode is hand-keyed choreography, one `<Sequence>` per round, so a new episode is a new file
+that reuses `Blocky`. The style is generic block-game, not Roblox: no Roblox name, logo, avatar or
+asset goes in, because it is their trademark and a channel that uses it can get the video claimed.
+
 ## What it does with footage
 
 - **Closes up the cuts.** Every kept range becomes a `<Sequence>` trimmed into the source, frame

@@ -5,7 +5,8 @@
   "scripts": {
     "studio": "remotion studio",
     "render": "remotion render Edit out/edit.mp4 --props=props.json",
-    "render:text": "remotion render TextShort out/short.mp4 --props=examples/text-short.json"
+    "render:text": "remotion render TextShort out/short.mp4 --props=examples/text-short.json",
+    "render:brawler": "remotion render Brawler out/brawler.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
