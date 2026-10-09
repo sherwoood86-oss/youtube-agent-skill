@@ -1,0 +1,19 @@
+{
+  "name": "yt-remotion",
+  "private": true,
+  "description": "Renders the props.py output: cuts closed up, captions burned in, hook text on the open.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Edit out/edit.mp4 --props=props.json"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.534",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}

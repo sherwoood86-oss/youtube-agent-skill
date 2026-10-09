@@ -1,6 +1,6 @@
 # The YouTube agent skill
 
-Eleven Claude skills that run a YouTube channel. Free, MIT, no signup, no API key, nothing to
+Twelve Claude skills that run a YouTube channel. Free, MIT, no signup, no API key, nothing to
 connect.
 
 One of them writes your script off 21 hook formulas and scores the hook before you waste a take on
@@ -38,7 +38,7 @@ Or as a plugin:
 ```
 
 Project-local instead of global: copy the same folders into your repo's `.claude/skills/`. No Claude
-Code at all? Paste any single `SKILL.md` at the top of a chat and it runs as a mode. You lose the six
+Code at all? Paste any single `SKILL.md` at the top of a chat and it runs as a mode. You lose the seven
 Python tools, which is most of the point of `/yt-script`, `/yt-retention` and `/yt-edit`, but the
 rest works.
 
@@ -47,7 +47,7 @@ Then spend ten minutes on [`templates/voice.md`](templates/voice.md). Copy it to
 my voice.md from these". Every skill reads that file. It matters more here than anywhere else,
 because you have to say the words out loud.
 
-## The eleven
+## The twelve
 
 | command | what it does |
 | --- | --- |
@@ -61,9 +61,10 @@ because you have to say the words out loud.
 | `/yt-shorts` | The Shorts already inside a long video, with a new first line written for each. |
 | `/yt-seo` | The description, the tags that are worth having, and the three queries this should win. |
 | `/yt-chapters` | Chapters from a transcript, validated against YouTube's own rules so they render. |
+| `/yt-remotion` | The cuts and the Shorts rendered with [Remotion](https://www.remotion.dev): cuts closed up, captions burned in, 9:16 with the hook on screen. |
 | `/yt-audit` | The whole channel, ending in ONE fix rather than twenty. |
 
-## The six tools
+## The seven tools
 
 Every one of these runs on a clean Python 3 with no dependencies. They are the reason the skills are
 not just prompts.
@@ -75,6 +76,7 @@ python3 skills/yt-edit/deadair.py transcript.srt               # edit decision l
 python3 skills/yt-chapters/chapters.py transcript.srt          # validated chapters
 python3 skills/yt-retention/retention.py retention.csv         # where they left, and why
 python3 skills/yt-viral/swipe.py collected.json --min 2.0      # outliers by own-channel multiple
+python3 skills/yt-remotion/props.py transcript.srt --src v.mp4 --edl edl.json  # Remotion timeline
 ```
 
 ## The fine print
@@ -98,6 +100,12 @@ its views.
 
 **`/yt-viral` reads, it does not scrape.** Public listings only. It never logs in as you and never
 touches your credentials.
+
+**`/yt-remotion` is the one thing here that needs Node.** `props.py` is plain Python like the rest;
+rendering the result runs Remotion locally (`npm install` in a copy of its `template/`). Caption word
+timing is estimated from cue timings, and a 9:16 crop is the centre of the frame. Scrub it before
+you ship it. Remotion's own licence is free for individuals and small teams; larger companies need
+a company licence from them.
 
 **Tags barely matter** and this pack says so instead of selling you a tag generator.
 
