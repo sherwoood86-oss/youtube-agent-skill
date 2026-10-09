@@ -55,6 +55,7 @@ npx remotion render TextShort out/short.mp4 --props=my-short.json
 
 It renders silent. Voiceover and music are the user's to add - say so, do not imply it has sound.
 
+## What it does with footage
 
 - **Closes up the cuts.** Every kept range becomes a `<Sequence>` trimmed into the source, frame
   aligned before the timeline is built so captions do not drift by the end of a long edit. A sliver
